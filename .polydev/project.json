@@ -1,0 +1,13 @@
+{
+  "name": "прр",
+  "templateId": "capacitor",
+  "devServerCommand": "npm run dev",
+  "scripts": {
+    "dev": "npm run dev"
+  },
+  "agent": {
+    "profile": "light",
+    "planApproval": true,
+    "askUser": true
+  }
+}

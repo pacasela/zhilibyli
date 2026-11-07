@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">МояМузыка</string>
+
+    <!-- Общие -->
+    <string name="unknown_track">Сохранённый трек</string>
+    <string name="unknown_artist">Неизвестный исполнитель</string>
+    <string name="no_app_for_link">Нет приложения, чтобы открыть ссылку</string>
+    <string name="voice_prompt">Скажите, что включить</string>
+
+    <!-- Обновление APK -->
+    <string name="update_title">Доступно обновление</string>
+    <string name="update_message">Вышла новая версия %1$s. Установите актуальную версию, чтобы всё работало правильно.</string>
+    <string name="update_force_message">Для дальнейшей работы нужно установить актуальную версию %1$s.</string>
+    <string name="update_download">Скачать</string>
+    <string name="update_later">Позже</string>
+    <string name="update_download_title">Обновление ЖилиБыли</string>
+    <string name="update_download_description">Скачиваем версию %1$s</string>
+    <string name="update_downloading">Скачиваем обновление…</string>
+    <string name="update_download_failed">Не удалось скачать обновление. Попробуйте позже.</string>
+    <string name="update_install_title">Установка обновления</string>
+    <string name="update_install_permission">Разрешите установку приложений из этого источника, чтобы обновить приложение.</string>
+    <string name="update_open_settings">Настройки</string>
+    <string name="update_cancel">Отмена</string>
+    <string name="update_install_failed">Не удалось открыть установщик. Скачайте APK на сайте zhilibyli.online.</string>
+
+    <!-- Офлайн-режим -->
+    <string name="offline_title">Офлайн-музыка</string>
+    <string name="offline_empty_short">Нет сохранённых треков</string>
+    <string name="offline_banner_text">Офлайн · %1$s</string>
+    <string name="offline_banner_action">Открыть</string>
+    <string name="offline_gate_title">Нет подключения к интернету</string>
+    <string name="offline_gate_saved">Доступны скачанные треки: %1$s.</string>
+    <string name="offline_gate_empty">Сохранённых треков пока нет — подключитесь к сети и скачайте музыку заранее.</string>
+    <string name="offline_player_error">Нет подключения к интернету. Доступны скачанные треки</string>
+    <string name="player_unable">Не удалось включить трек. Попробуйте ещё раз.</string>
+    <string name="offline_gate_open_button">Открыть офлайн-плеер</string>
+    <string name="offline_gate_retry">Повторить</string>
+    <string name="offline_open">Открыть офлайн-плеер</string>
+    <string name="offline_open_count">Открыть офлайн-плеер · %1$d</string>
+    <string name="offline_still_no_network">Интернета всё ещё нет</string>
+    <string name="offline_play_all">Слушать всё</string>
+    <string name="offline_search_hint">Поиск по сохранённым</string>
+    <string name="offline_to_catalog">К каталогу</string>
+    <string name="offline_empty_title">Здесь появятся сохранённые треки</string>
+    <string name="offline_empty_text">Скачайте трек в приложении — и он заиграет без интернета, даже в самолёте.</string>
+    <string name="offline_not_found_title">Ничего не найдено</string>
+    <string name="offline_not_found_text">Попробуйте другое название или исполнителя.</string>
+    <string name="offline_storage_used">%1$s в памяти устройства</string>
+    <string name="offline_storage_note">Файлы хранятся в приватной памяти приложения и играют без интернета.</string>
+    <string name="offline_count_format">%1$d %2$s · %3$s</string>
+    <string name="offline_delete_title">Удалить трек?</string>
+    <string name="offline_delete_message">Файл будет удалён из памяти устройства. Скачать его снова можно при подключении к интернету.</string>
+    <string name="offline_delete_confirm">Удалить</string>
+    <string name="offline_cancel">Отмена</string>
+    <string name="offline_downloading">Сохраняем…</string>
+    <string name="offline_download_percent">Сохраняем… %1$d%%</string>
+    <string name="offline_download_title">Скачивание в офлайн</string>
+    <string name="offline_playing_badge">офлайн-копия</string>
+    <string name="offline_track_meta">%1$s · %2$s</string>
+    <string name="offline_imported_title">Сохранённый трек</string>
+
+    <!-- Плеер -->
+    <string name="player_title">Сейчас играет</string>
+    <string name="player_nothing">Ничего не играет</string>
+    <string name="player_close">Закрыть плеер</string>
+    <string name="player_play">Воспроизвести</string>
+    <string name="player_pause">Пауза</string>
+    <string name="player_prev">Предыдущий трек</string>
+    <string name="player_next">Следующий трек</string>
+    <string name="player_offline">офлайн</string>
+    <string name="player_position">Позиция трека</string>
+    <string name="player_queue_title">Очередь</string>
+    <string name="player_queue_empty">В очереди пока только этот трек</string>
+    <string name="player_to_catalog">Открыть каталог</string>
+
+    <!-- Доступность -->
+    <string name="cd_back">Назад</string>
+    <string name="cd_delete">Удалить из офлайна</string>
+    <string name="cd_close">Закрыть</string>
+    <string name="cd_cover">Обложка трека</string>
+</resources>

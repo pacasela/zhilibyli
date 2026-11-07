@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+PROJECT_DIR="/opt/zhilibyli/android"
+GRADLE_DIR="/opt/gradle/gradle-8.7"
+GRADLE_BIN="${GRADLE_DIR}/bin/gradle"
+PROJECT_DIR="/opt/zhilibyli/android"
+
+# Ensure wrapper properties exist
+WRAPPER_DIR="${PROJECT_DIR}/gradle/wrapper"
+WRAPPER_JAR="${WRAPPER_DIR}/gradle-wrapper.jar"
+WRAPPER_PROPS="${WRAPPER_DIR}/gradle-wrapper.properties"
+
+# Run Gradle with the project directory
+"${GRADLE_DIR}/bin/gradle" -p "${PROJECT_DIR}" "$@"

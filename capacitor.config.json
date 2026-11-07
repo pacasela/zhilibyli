@@ -1,0 +1,15 @@
+{
+  "appId": "app.zhilibyli",
+  "appName": "ЖилиБыли",
+  "webDir": "dist",
+  "icon": "iconss.png",
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImg": "iconss.png",
+      "backgroundImg": "android-bg-1024.png"
+    }
+  },
+  "plugins": {
+    "SplashScreen": {}
+  }
+}

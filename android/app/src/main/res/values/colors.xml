@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Фирменные цвета сайта -->
+    <color name="zhili_paper">#FFFFFF</color>
+    <color name="zhili_night">#101013</color>
+    <color name="zhili_accent">#FFDB4D</color>
+    <color name="zhili_ink">#111115</color>
+    <!-- Фон иконки приложения (совпадает с фоном приложенного artwork) -->
+    <color name="zhili_icon_bg">#E8EBF3</color>
+
+    <!-- Семантические цвета светлой темы -->
+    <color name="bg">#FFFFFF</color>
+    <color name="surface">#F7F7F9</color>
+    <color name="surface2">#EDEDF2</color>
+    <color name="text_primary">#111115</color>
+    <color name="text_secondary">#6C6C78</color>
+    <color name="line">#E5E5EC</color>
+    <color name="accent">#FFDB4D</color>
+    <color name="accent_ink">#111115</color>
+    <color name="danger">#D93A5B</color>
+    <color name="scrim">#99000000</color>
+
+    <!-- Фон нативного плеера: мягкий лавандовый градиент + ambient-пятна. -->
+    <color name="player_backdrop_top">#F3EEFF</color>
+    <color name="player_backdrop_bottom">#F8F6FF</color>
+    <color name="player_glow_primary">#336B4DFF</color>
+    <color name="player_glow_accent">#26FFD84D</color>
+    <color name="player_scrim_top">#9EF8F6FF</color>
+    <color name="player_scrim_center">#DBF8F6FF</color>
+    <color name="player_scrim_bottom">#FFF8F6FF</color>
+    <color name="player_text_shadow">#CCF8F6FF</color>
+</resources>

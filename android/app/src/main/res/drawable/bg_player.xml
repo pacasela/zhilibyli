@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Базовый фон: мягкий градиент в цветах сайта. -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="@color/player_backdrop_bottom"
+                android:startColor="@color/player_backdrop_top" />
+        </shape>
+    </item>
+
+    <!-- Ambient-пятна, как у веб-плеера: фиолетовое сверху справа… -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="0.9"
+                android:centerY="0.02"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="380dp"
+                android:startColor="@color/player_glow_primary"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- …и тёплое жёлтое слева. -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="0.08"
+                android:centerY="0.38"
+                android:endColor="@android:color/transparent"
+                android:gradientRadius="320dp"
+                android:startColor="@color/player_glow_accent"
+                android:type="radial" />
+        </shape>
+    </item>
+</layer-list>

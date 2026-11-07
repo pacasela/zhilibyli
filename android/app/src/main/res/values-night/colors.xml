@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#101013</color>
+    <color name="surface">#17171C</color>
+    <color name="surface2">#202027</color>
+    <color name="text_primary">#F5F5F7</color>
+    <color name="text_secondary">#A1A1AE</color>
+    <color name="line">#2A2A33</color>
+    <color name="accent">#FFDB4D</color>
+    <color name="accent_ink">#111115</color>
+    <color name="danger">#FF6B86</color>
+    <color name="scrim">#B3000000</color>
+
+    <!-- Фон нативного плеера: тёмный градиент + ambient-пятна. -->
+    <color name="player_backdrop_top">#1B1529</color>
+    <color name="player_backdrop_bottom">#0D0D12</color>
+    <color name="player_glow_primary">#4D6B4DFF</color>
+    <color name="player_glow_accent">#22FFD84D</color>
+    <color name="player_scrim_top">#9E0D0D12</color>
+    <color name="player_scrim_center">#DB0D0D12</color>
+    <color name="player_scrim_bottom">#FF0D0D12</color>
+    <color name="player_text_shadow">#CC0D0D12</color>
+</resources>
