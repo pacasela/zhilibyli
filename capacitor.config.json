@@ -1,0 +1,10 @@
+{
+  "appId": "com.zhilibyli.app",
+  "appName": "ZhiliByli",
+  "webDir": "dist",
+  "server": {
+    "url": "https://zhilibyli.online/",
+    "cleansession": false,
+    "androidScheme": "https"
+  }
+}
