@@ -29,4 +29,8 @@
     <color name="player_scrim_center">#DBF8F6FF</color>
     <color name="player_scrim_bottom">#FFF8F6FF</color>
     <color name="player_text_shadow">#CCF8F6FF</color>
+
+    <!-- Экран очереди: вкладки -->
+    <color name="tab_selected">#111115</color>
+    <color name="tab_unselected">#6C6C78</color>
 </resources>

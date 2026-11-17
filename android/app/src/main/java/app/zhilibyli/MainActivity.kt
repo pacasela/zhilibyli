@@ -39,6 +39,7 @@ import app.zhilibyli.download.DownloadService
 import app.zhilibyli.ui.OfflineActivity
 import app.zhilibyli.update.UpdateManager
 import app.zhilibyli.ui.PlayerActivity
+import app.zhilibyli.ui.QueueActivity
 import app.zhilibyli.util.formatBytes
 import app.zhilibyli.util.plural
 import kotlinx.coroutines.launch
@@ -777,7 +778,9 @@ class MainActivity : AppCompatActivity() {
 
         @JavascriptInterface
         fun openOffline() {
-            runOnUiThread { openOffline() }
+            runOnUiThread {
+                OfflineActivity.start(this@MainActivity)
+            }
         }
 
         @JavascriptInterface
@@ -870,7 +873,9 @@ class MainActivity : AppCompatActivity() {
 
         @JavascriptInterface
         fun openOffline() {
-            runOnUiThread { openOffline() }
+            runOnUiThread {
+                OfflineActivity.start(this@MainActivity)
+            }
         }
 
         @JavascriptInterface
@@ -880,6 +885,13 @@ class MainActivity : AppCompatActivity() {
         fun openPlayer() {
             runOnUiThread {
                 startActivity(Intent(this@MainActivity, PlayerActivity::class.java))
+            }
+        }
+
+        @JavascriptInterface
+        fun openQueue() {
+            runOnUiThread {
+                startActivity(Intent(this@MainActivity, QueueActivity::class.java))
             }
         }
     }

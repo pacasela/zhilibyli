@@ -179,4 +179,87 @@ object PlaybackHub {
     fun release() {
         PlayerCore.release()
     }
+
+    // ── Управление очередью (для нативного экрана очереди) ────────────────
+
+    /** Текущая очередь треков (список MediaItem). */
+    fun getQueue(): List<MediaItem> {
+        val player = PlayerCore.peek() ?: return emptyList()
+        return (0 until player.mediaItemCount).map { player.getMediaItemAt(it) }
+    }
+
+    /** Текущий трек (MediaItem) или null. */
+    fun getCurrentTrack(): MediaItem? {
+        return PlayerCore.peek()?.currentMediaItem
+    }
+
+    /** Играет ли сейчас. */
+    fun isPlaying(): Boolean {
+        return PlayerCore.peek()?.isPlaying == true
+    }
+
+    /** Переключить play/pause. */
+    fun togglePlayPause() {
+        val player = PlayerCore.peek() ?: return
+        if (player.isPlaying) {
+            player.pause()
+        } else {
+            player.play()
+        }
+    }
+
+    /** Следующий трек. */
+    fun next() {
+        val player = PlayerCore.peek() ?: return
+        if (player.hasNextMediaItem()) {
+            player.seekToNext()
+            player.play()
+        }
+    }
+
+    /** Убрать трек из очереди по индексу. */
+    fun removeFromQueue(position: Int) {
+        val player = PlayerCore.peek() ?: return
+        if (position in 0 until player.mediaItemCount) {
+            player.removeMediaItem(position)
+        }
+    }
+
+    /** Запустить очередь с указанного индекса. */
+    fun playQueue(queue: List<MediaItem>, startIndex: Int) {
+        if (queue.isEmpty()) return
+        val player = PlayerCore.peek() ?: return
+        player.stop()
+        player.clearMediaItems()
+        queue.forEach { player.addMediaItem(it) }
+        player.seekTo(startIndex.coerceIn(0, queue.size - 1), 0L)
+        player.prepare()
+        player.play()
+    }
+
+    /** Запустить офлайн-очередь с указанного индекса. */
+    fun playOffline(context: Context, tracks: List<OfflineTrack>, startIndex: Int) {
+        if (tracks.isEmpty()) return
+        val player = PlayerCore.peek() ?: return
+        val repo = OfflineRepository.get(context)
+        player.stop()
+        player.clearMediaItems()
+        tracks.forEach { track ->
+            val metadata = MediaMetadata.Builder()
+                .putString(MediaMetadata.METADATA_KEY_TITLE, track.displayTitle)
+                .putString(MediaMetadata.METADATA_KEY_ARTIST, track.displayArtist)
+                .build()
+            val file = repo.fileFor(track)
+            val uri = Uri.fromFile(file)
+            val item = MediaItem.Builder()
+                .setMediaId(track.trackId)
+                .setUri(uri)
+                .setMediaMetadata(metadata)
+                .build()
+            player.addMediaItem(item)
+        }
+        player.seekTo(startIndex.coerceIn(0, tracks.size - 1), 0L)
+        player.prepare()
+        player.play()
+    }
 }

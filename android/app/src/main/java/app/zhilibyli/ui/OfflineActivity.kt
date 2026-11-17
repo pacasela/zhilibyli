@@ -208,4 +208,12 @@ class OfflineActivity : AppCompatActivity() {
         )
         finish()
     }
+
+    companion object {
+        fun start(context: android.content.Context) {
+            val intent = Intent(context, OfflineActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            context.startActivity(intent)
+        }
+    }
 }

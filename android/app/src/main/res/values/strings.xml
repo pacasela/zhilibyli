@@ -79,4 +79,23 @@
     <string name="cd_delete">Удалить из офлайна</string>
     <string name="cd_close">Закрыть</string>
     <string name="cd_cover">Обложка трека</string>
+
+    <!-- Экран очереди -->
+    <string name="queue_empty">Очередь пуста</string>
+    <string name="lyrics_placeholder">Текст песни не найден</string>
+    <string name="queue_tab_text">Текст</string>
+    <string name="queue_tab_queue">Очередь</string>
+    <string name="queue_remove">Убрать из очереди</string>
+    <string name="queue_play">Слушать</string>
+    <string name="queue_mini_play">Воспроизвести</string>
+    <string name="queue_mini_pause">Пауза</string>
+    <string name="queue_mini_next">Следующий трек</string>
+    <string name="queue_cover_desc">Обложка трека в мини-плеере</string>
+    <string name="queue_no_title">Без названия</string>
+    <string name="queue_no_artist">Неизвестный исполнитель</string>
+    <string name="queue_play_desc">Воспроизвести / пауза</string>
+    <string name="track_cover_desc">Обложка трека</string>
+    <string name="track_title">Трек</string>
+    <string name="track_artist">Исполнитель</string>
+    <string name="track_remove_desc">Убрать из очереди</string>
 </resources>

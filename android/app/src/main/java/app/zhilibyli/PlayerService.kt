@@ -1,55 +1,69 @@
 package app.zhilibyli
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.os.Build
+import android.os.IBinder
+import androidx.core.app.NotificationCompat
+import androidx.core.app.ServiceCompat
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
+import app.zhilibyli.ui.PlayerActivity
 
 /**
- * Фоновый сервис воспроизведения (Media3 MediaSessionService):
- * держит плеер живым, показывает системное медиа-уведомление
- * и продолжает играть при свёрнутом приложении и без интернета
- * (файлы из filesDir/tracks).
- *
- * Сам ExoPlayer создаётся в [PlayerCore] и общий для всего процесса,
- * поэтому кнопки в интерфейсе управляют ровно тем плеером, который звучит.
+ * Медиа-сервис — плеер в фоне + уведомление в шторке с кнопками prev/play-pause/next.
  */
 class PlayerService : MediaSessionService() {
 
     private var session: MediaSession? = null
 
+    companion object {
+        private const val CHANNEL_ID = "zhilibyli_player"
+        private const val NOTIFICATION_ID = 1
+    }
+
     override fun onCreate() {
         super.onCreate()
+        val player = PlayerCore.get(this)
 
-        val player: ExoPlayer = PlayerCore.get(this)
-
-        // Тап по уведомлению возвращает в основное приложение: там привычный
-        // плеер с очередью и навигацией. Раньше открывался отдельный
-        // PlayerActivity — урезанный экран без навигации.
-        val intent = Intent(this, MainActivity::class.java).apply {
-            action = Intent.ACTION_VIEW
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT)
+        // Notification channel (Android 8+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
+                setShowBadge(false)
+                lockscreenVisibility = NotificationCompat.VISIBILITY_PUBLIC
+            }
+            (getSystemService(NotificationManager::class.java) as NotificationManager)
+                .createNotificationChannel(channel)
         }
-        val sessionActivity = PendingIntent.getActivity(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-        )
 
+        // MediaSession — привязан к Player, автоматически показывает MediaNotification
         session = MediaSession.Builder(this, player)
-            .setSessionActivity(sessionActivity)
+            .setSessionActivity(PendingIntent.getActivity(
+                this, 0,
+                Intent(this, PlayerActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                },
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+            ))
             .build()
+
+        // Добавляем сессию в сервис — MediaSessionService сам создаёт медиа-уведомление
+        addSession(session!!)
+    }
+
+    override fun onDestroy() {
+        session?.run { release() }
+        session = null
+        ServiceCompat.stopForeground(this, ServiceCompat.STOP_FOREGROUND_REMOVE)
+        super.onDestroy()
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? = session
-
-    override fun onDestroy() {
-        // Плеер не освобождаем: он принадлежит процессу и может продолжать
-        // использоваться экранами после пересоздания сервиса.
-        session?.release()
-        session = null
-        super.onDestroy()
-    }
 }

@@ -245,6 +245,15 @@ class DownloadService : Service() {
     }
 
     private fun publishProgress(request: DownloadRequest, bytes: Long, total: Long) {
+        // Silent-загрузки (авто-кеш по лайку) не показывают уведомление
+        if (request.silent) {
+            val percent = if (total > 0) ((bytes * 100) / total).toInt() else -1
+            repo.updateProgress(
+                DownloadProgress(request.trackId, request.title, percent, bytes, total),
+            )
+            sendProgress(request.trackId, request.title, percent, bytes, total)
+            return
+        }
         val percent = if (total > 0) ((bytes * 100) / total).toInt() else -1
         repo.updateProgress(
             DownloadProgress(request.trackId, request.title, percent, bytes, total),
